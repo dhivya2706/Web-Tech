@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>
+        Table Exercise
+    </title>
+    <link rel="stylesheet" href="style2.css">
+    </head>
+    <body>
+        <h2 class="title">Table Excercise</h2>
+        <center><table border="1px" class="table">
+            <tr>
+                <td rowspan="3"> Maths</td>
+                <td>science</td>
+            </tr>
+            <tr>
+                <td>social</td>
+            </tr>
+            <tr>
+                <td>English</td>
+            </tr>
+            <tr>
+                <td>Tamil</td>
+                <td rowspan="3">PT</td>
+            </tr>
+            <tr>
+                <td>Computer Science</td>
+            </tr>
+            <tr>
+                <td>Biology</td>
+            </tr>
+            <tr>
+                <td rowspan="3">Chemistry</td>
+                <td>Physics</td>
+            </tr>
+            <tr>
+                <td>Zoology</td>
+            </tr>
+            <tr>
+                <td>Arts</td>
+            </tr>
+        </table></center>
+    </body>
+</html>
