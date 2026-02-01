@@ -1,2 +1,11 @@
-# Web-Tech
-This repository contains basic web technology code examples for beginners. It covers core concepts of HTML, CSS, JavaScript, and React, with simple programs and components to help students understand both traditional and modern web development fundamentals.
+## Web Technology Basics
+
+This repository provides basic web technology codes for beginners and students.
+It includes simple, easy-to-understand examples of:
+
+- HTML (structure, forms, tables)
+- CSS (styling, layouts, responsiveness)
+- JavaScript (basic logic, DOM manipulation, events)
+- React (components, props, state, hooks – basics)
+
+This repository is intended for learning, practice, and academic use.
