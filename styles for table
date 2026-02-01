@@ -1,0 +1,10 @@
+body {
+    font-family: Arial, sans-serif;
+}
+.title {
+    text-align: center;
+}
+.table{
+    width: 50%;
+    text-align: center;
+}
