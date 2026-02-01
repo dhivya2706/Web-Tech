@@ -1,1 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>INFORMATION FORM</title>
+    <link rel="stylesheet" href="style1.css">
+</head>
+
+<body>
+    <h1 id="s1" class="title">Information Form</h1>
+
+    <p class="info">
+        This form is only for College purpose.
+        If you need any information visit:
+        <a href="https://erp.mepcoeng.ac.in/"> ERP</a>
+    </p>
+
+    <fieldset>
+        <legend>Academic:</legend>
+
+        <form method="get" action="FORM1.html" autocomplete="on">
+            Roll No:
+            <input type="text" name="txt1" placeholder="ex:23BIT013" required><br>
+
+            Name:
+            <input type="text" name="txt2" required><br>
+
+            Department:
+            <select name="Dept">
+                <option value="CSE">CSE</option>
+                <option value="IT" selected>IT</option>
+                <option value="AIDS">AIDS</option>
+                <option value="CIVIL">CIVIL</option>
+            </select><br>
+
+            <div class="section">
+                <label>Section</label>
+                <input type="radio" name="section" value="A">A
+                <input type="radio" name="section" value="B">B
+            </div>
+
+            Blood Group:
+            <input type="text" pattern="(A|AB|B|O)" required><br>
+
+            Email:
+            <input type="email" name="txt5" placeholder="example123@gmail.com" autocomplete="email"><br>
+
+            Password:
+            <input type="password" name="txt6" required><br>
+    </fieldset>
+
+    <br>
+
+    <fieldset>
+        <legend>Others:</legend>
+            Admission Date:
+            <input type="date" name="txt7"><br>
+
+            Exam Time:
+            <input type="time" name="txt8"><br>
+
+            Search Course:
+            <input type="search" name="txt9"><br>
+
+            Ratings:
+            <input type="range" min="0" max="100" value="50"><br>
+
+            Background Color:
+            <input type="color"><br>
+    </fieldset>
+        <input type="checkbox" name="txt10" required>
+        <label>I agree all the conditions</label><br>
+
+        <center>
+            <input type="submit" value="Submit">
+        </center>
+
+    <p id="s2" class="top-link">
+        <a href="#s1">Move to Top</a>
+    </p>
+</form>
+</body>
+</html>
 
