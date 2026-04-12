@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Death Note Pale Sticky Notes</title>
+
+<style>
+    body {
+        font-family: "Georgia", serif;
+        margin-left: 40px;
+        margin-right: 40px;
+        padding: 20px;
+        border: 3px solid #b39ddb;
+        background-image: url("R.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    h1 {
+        text-align: center;
+        background-color: #ede7f6;
+        color: #4a148c;
+        border: 2px solid #b39ddb;
+        padding: 12px;
+    }
+
+    .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 25px;
+        margin-top: 30px;
+    }
+
+    .sticky {
+        padding: 18px;
+        border: 2px solid #555;
+        box-shadow: 4px 4px 0 #aaa;
+        position: relative;
+        min-height: 300px;
+    }
+
+    .sticky::before {
+        content: "";
+        width: 14px;
+        height: 14px;
+        background-color: #ffab91;
+        border: 1px solid #555;
+        position: absolute;
+        top: -8px;
+        left: -8px;
+    }
+
+    .story { background-color: #fff3e0; }
+    .rules { background-color: #e8f5e9; }
+    .chars { background-color: #e3f2fd; }
+
+    h2 {
+        text-align: center;
+        background-color: rgba(255,255,255,0.6);
+        border: 1px solid #666;
+        padding: 6px;
+    }
+
+    .story p {
+        text-align: justify;
+        line-height: 1.6;
+        margin-top: 10px;
+    }
+
+    .story a {
+        color: #4a148c;
+        text-decoration: underline;
+        border: none; /* removed border */
+        padding: 0;
+    }
+
+    .story a:hover {
+        color: #d500f9;
+    }
+
+    img {
+        width: 140px;
+        border-radius: 18px;
+        border: 2px solid #666;
+        display: block;
+        margin: 12px auto;
+    }
+
+    ol {
+        padding-left: 20px;
+        margin-top: 10px;
+    }
+
+    ul {
+        list-style-type: "✦ ";
+        padding-left: 20px;
+        margin-top: 10px;
+    }
+
+    li {
+        margin: 6px 0;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border: 2px solid #b39ddb;
+        margin-top: 50px;
+        background-color: white;
+    }
+
+    th, td {
+        border: 1px solid #b39ddb;
+        padding: 10px;
+        text-align: center;
+    }
+
+    th {
+        background-color: #ede7f6;
+        color: #4a148c;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f3e5f5;
+    }
+
+    tr:nth-child(odd) {
+        background-color: #fafafa;
+    }
+
+    .char-img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        border: 1px solid #666;
+    }
+
+    .link-box {
+        margin-top: 30px;
+        text-align: center;
+        padding: 15px;
+        border: 2px solid #b39ddb;
+        background-color: #f3e5f5;
+    }
+
+    a {
+        color: #4a148c;
+        text-decoration: none;
+        padding: 8px 14px;
+        border: 1px solid #4a148c;
+        background-color: #ffffff;
+    }
+
+    a:hover {
+        background-color: #d1c4e9;
+    }
+</style>
+</head>
+
+<body>
+
+<h1>📓 Death Note </h1>
+
+<div class="grid">
+
+    <div class="sticky story">
+        <h2>📒 Sticky Story</h2>
+        <p>
+            Ryuk, a bored Shinigami 😈, dropped the Death Note into the human world just to entertain himself.
+            <a href="https://en.wikipedia.org/wiki/Light_Yagami" target="_blank">Light Yagami</a> 📓, a brilliant but restless student, discovered the notebook and tested its power.
+            As criminals began to die, Light convinced himself that he was chosen to create a new world
+            ruled by justice ⚖️, slowly losing his humanity in the process.
+        </p>
+    </div>
+
+    <div class="sticky rules">
+        <h2>📜 Death Note Rules</h2>
+        <ol>
+            <li>The human whose name is written shall die</li>
+            <li>The writer must visualize the face</li>
+            <li>The cause of death can be specified</li>
+            <li>The Death Note will not affect those under 780 days old</li>
+            <li>If the cause is not written, heart attack occurs</li>
+            <li>Details of death can be written within 40 seconds</li>
+            <li>Ownership can be transferred to another human</li>
+        </ol>
+    </div>
+
+    <div class="sticky chars">
+        <h2>👥 Main Characters</h2>
+        <ul>
+            <li>Light Yagami</li>
+            <li>L</li>
+            <li>Ryuk</li>
+            <li>Misa Amane</li>
+            <li>Near</li>
+            <li>Mello</li>
+            <li>Soichiro Yagami</li>
+        </ul>
+    </div>
+
+</div>
+
+<table>
+    <tr>
+        <th>Character</th>
+        <th>Role</th>
+        <th>Image</th>
+    </tr>
+    <tr>
+        <td>Light</td>
+        <td>Kira</td>
+        <td><img class="char-img" src="Light_Yagami.png" alt="Light"></td>
+    </tr>
+    <tr>
+        <td>L</td>
+        <td>Detective</td>
+        <td><img class="char-img" src="L.png" alt="L"></td>
+    </tr>
+    <tr>
+        <td>Ryuk</td>
+        <td>Shinigami</td>
+        <td><img class="char-img" src="Ryuk.png" alt="Ryuk"></td>
+    </tr>
+    <tr>
+        <td>Misa Amane</td>
+        <td>Supporter</td>
+        <td><img class="char-img" src="Misa.png" alt="Misa"></td>
+    </tr>
+</table>
+
+<div class="link-box">
+    <a href="https://en.wikipedia.org/wiki/Death_Note" target="_blank">
+        Learn More About Death Note
+    </a>
+</div>
+
+</body>
+</html>
