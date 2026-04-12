@@ -1,0 +1,44 @@
+/* Basic page styling */
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #f9f9f9;
+  text-align: center;
+  padding: 20px;
+  margin: 0;
+}
+
+h1 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+h2 {
+  color: #444;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+/* Inputs */
+input[type="text"] {
+  padding: 8px;
+  margin: 10px;
+  width: 250px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+input[type="file"] {
+  margin: 10px;
+}
+
+/* Images */
+img {
+  margin: 10px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+/* Component wrapper */
+div {
+  margin-bottom: 20px;
+}
