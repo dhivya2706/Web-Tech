@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Windows</title>
+  <style>
+    /* Main page background using uploaded image */
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      gap: 30px;
+      margin: 0;
+      background: url('wi.png') no-repeat center center;
+      background-size: cover;
+      color: white;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    /* Button row container */
+    .button-row {
+      display: flex;
+      gap: 20px;
+    }
+
+    button {
+      padding: 12px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.3s;
+      font-weight: bold;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+    }
+
+    #openBtn { background-color: #4CAF50; color: white; }
+    #closeBtn { background-color: #f44336; color: white; }
+  </style>
+</head>
+<body>
+
+  <h1>Windows</h1>
+
+  <!-- Buttons in a row -->
+  <div class="button-row">
+    <button id="openBtn">Open Window</button>
+    <button id="closeBtn">Close Window</button>
+  </div>
+
+  <script>
+    let newWindow;
+
+    // Open new window with Gmail regex validator
+    document.getElementById('openBtn').addEventListener('click', () => {
+      newWindow = window.open('', '_blank', 'width=450,height=350');
+      if (newWindow) {
+        newWindow.document.write(`
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Gmail Validator</title>
+            <style>
+              body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+                gap: 15px;
+                background: linear-gradient(135deg, #FF9A9E, #FAD0C4);
+                color: #333;
+              }
+              h2 { text-align: center; }
+              input {
+                padding: 10px;
+                font-size: 16px;
+                border-radius: 6px;
+                border: 1px solid #ccc;
+                width: 80%;
+              }
+              button {
+                padding: 10px 20px;
+                font-size: 16px;
+                border: none;
+                border-radius: 8px;
+                background-color: #2196F3;
+                color: white;
+                cursor: pointer;
+                transition: transform 0.2s;
+              }
+              button:hover {
+                transform: scale(1.05);
+              }
+            </style>
+          </head>
+          <body>
+            <h2>Gmail Validator</h2>
+            <input id="emailInput" placeholder="Enter your Gmail (letters/numbers only)" />
+            <button id="checkBtn">Validate Email</button>
+
+            <script>
+              document.getElementById('checkBtn').addEventListener('click', () => {
+                const input = document.getElementById('emailInput').value.trim();
+                const gmailRegex = /^[A-Za-z0-9]+@gmail\\.com$/;
+                if(gmailRegex.test(input)) {
+                  alert('✅ Valid Gmail!');
+                } else {
+                  alert('❌ Invalid Gmail! Must be letters/numbers only and end with @gmail.com.');
+                }
+              });
+            <\/script>
+          </body>
+          </html>
+        `);
+        newWindow.document.close();
+      } else {
+        alert('Popup blocked! Please allow popups for this site.');
+      }
+    });
+
+    // Close the new window
+    document.getElementById('closeBtn').addEventListener('click', () => {
+      if(newWindow && !newWindow.closed) {
+        newWindow.close();
+      } else {
+        alert('No window to close or it is already closed.');
+      }
+    });
+  </script>
+
+</body>
+</html>
