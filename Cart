@@ -1,0 +1,42 @@
+import React, { useState } from "react";
+
+function ItemList() {
+  const [items, setItems] = useState([
+    { id: 1, name: "Apple" },
+    { id: 2, name: "Banana" },
+    { id: 3, name: "Orange" }
+  ]);
+
+  function deleteItem(id) {
+    var updatedItems = items.filter(function (item) {
+      return item.id !== id;
+    });
+    setItems(updatedItems);
+  }
+
+  return (
+    <div style={{ textAlign: "center", marginTop: "30px" }}>
+      <h2>Dynamic List</h2>
+
+      <ul style={{ listStyleType: "none" }}>
+        {items.map(function (item) {
+          return (
+            <li key={item.id} style={{ margin: "10px" }}>
+              {item.name}
+              <button
+                style={{ marginLeft: "10px" }}
+                onClick={function () {
+                  deleteItem(item.id);   
+                }}
+              >
+                Delete
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+}
+
+export default ItemList;
