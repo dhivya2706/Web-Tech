@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fibonacci Number</title>
+</head>
+<body>
+
+  <h2>Fibonacci Calculator</h2>
+
+  <input type="number" id="num" placeholder="Enter n">
+  <button onclick="run()">Find Fibonacci</button>
+
+  <p id="output"></p>
+
+  <script>
+    function fibonacci(n) {
+      if (n === 0) return 0;
+      if (n === 1) return 1;
+      return fibonacci(n - 1) + fibonacci(n - 2);
+    }
+
+    function run() {
+      const n = Number(document.getElementById("num").value);
+      document.getElementById("output").textContent =
+        "Fibonacci(" + n + ") = " + fibonacci(n);
+    }
+  </script>
+
+</body>
+</html>

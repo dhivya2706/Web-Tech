@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>JavaScript Dates</title>
+</head>
+<body>
+
+  <h2>Find Day Name</h2>
+
+  <input type="text" id="dateInput" placeholder="MM/DD/YYYY">
+  <button onclick="showDay()">Get Day</button>
+
+  <p id="output"></p>
+
+  <script>
+    "use strict";
+
+    function getDayName(dateString) {
+      const days = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ];
+
+      return days[new Date(dateString).getDay()];
+    }
+
+    function showDay() {
+      const date = document.getElementById("dateInput").value;
+      const dayName = getDayName(date);
+      document.getElementById("output").textContent =
+        "Day: " + dayName;
+    }
+  </script>
+
+</body>
+</html>

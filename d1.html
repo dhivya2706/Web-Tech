@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>getCount Example</title>
+  <style>
+    h2{
+        text-align: center ;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Count Objects where x == y</h2>
+
+  <button onclick="runFunction()">Get Count</button>
+  <p id="result"></p>
+
+  <script>
+    function getCount(objects) {
+      let count = 0;
+
+      objects.forEach((element) => {
+        if (element.x === element.y) {
+          count++;
+        }
+      });
+      return count;
+    }
+
+    function runFunction() {
+      let data = [
+        { x: 1, y: 1 },
+        { x: 2, y: 3 },
+        { x: 4, y: 4 },
+        { x: 5, y: 6 }
+      ];
+
+      const result = getCount(data);
+      document.getElementById("result").innerText =
+        "Count: " + result;
+    }
+  </script>
+
+</body>
+</html>

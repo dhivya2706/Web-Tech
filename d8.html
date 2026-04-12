@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Polygon Perimeter</title>
+</head>
+<body>
+
+  <h2>Polygon Perimeter</h2>
+
+  <button onclick="run()">Calculate Perimeter</button>
+  <p id="output"></p>
+
+  <script>
+    class Polygon {
+      constructor(array) {
+        this.array = array;
+      }
+      perimeter() {
+        return this.array.reduce(
+          (acc, currentValue) => acc + currentValue,
+          0
+        );
+      }
+    }
+
+    function run() {
+      const polygon = new Polygon([3, 4, 5]);
+      document.getElementById("output").textContent =
+        "Perimeter: " + polygon.perimeter();
+    }
+  </script>
+
+</body>
+</html>

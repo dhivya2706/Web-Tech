@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Regex Title Check</title>
+</head>
+<body>
+
+  <h2>Valid Title Checker</h2>
+
+  <input type="text" id="name" placeholder="Eg: Mr.John">
+  <button onclick="check()">Check</button>
+
+  <p id="result"></p>
+
+  <script>
+    function regexVar(str) {
+      const re = /^(Mr\.|Mrs\.|Ms\.|Dr\.|Er\.)[a-zA-Z]+$/;
+      return re.test(str);
+    }
+
+    function check() {
+      const value = document.getElementById("name").value;
+      const isValid = regexVar(value);
+      document.getElementById("result").textContent =
+        "Valid: " + isValid;
+    }
+  </script>
+
+</body>
+</html>

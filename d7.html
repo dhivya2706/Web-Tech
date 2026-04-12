@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Button Counter</title>
+  <style>
+    .button-container {
+      margin-top: 20px;
+    }
+    #btn {
+      font-size: 20px;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Button Click Counter</h2>
+
+  <!-- Container required by JS -->
+  <div class="button-container"></div>
+
+  <script>
+    "use strict";
+
+    // Create a <button> element
+    const button = document.createElement("button");
+    button.id = "btn";
+    button.type = "button";
+
+    // Append button to the DOM
+    document.querySelector(".button-container").append(button);
+
+    // Select DOM Element
+    const counter = document.querySelector("#btn");
+
+    // Initialize the counter
+    let counterValue = 0;
+    counter.textContent = counterValue;
+
+    // Add click event
+    counter.addEventListener("click", () => {
+      counterValue++;
+      counter.textContent = counterValue;
+    });
+  </script>
+
+</body>
+</html>
