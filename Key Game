@@ -1,0 +1,168 @@
+import React, { useState, useEffect } from "react";
+import "./App.css";
+
+function getRandomLetter() {
+  const letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  return letters[Math.floor(Math.random() * letters.length)];
+}
+
+function getRandomX() {
+  return Math.floor(Math.random() * 10);
+}
+
+export default function FallingLettersGame() {
+  const [letters, setLetters] = useState([
+    { id: 1, x: getRandomX(), y: 0, char: getRandomLetter() },
+  ]);
+  const [bucket, setBucket] = useState(4);
+  const [score, setScore] = useState(0);
+  const [lives, setLives] = useState(3);
+  const [speed, setSpeed] = useState(500);
+  const [gameOver, setGameOver] = useState(false);
+
+  useEffect(() => {
+    if (gameOver) return;
+
+    const interval = setInterval(() => {
+      setLetters((prev) => {
+        let updated = prev.map((l) => ({ ...l, y: l.y + 1 }));
+
+        let remaining = [];
+
+        updated.forEach((l) => {
+          if (l.y >= 9) {
+            if (l.x === bucket) {
+              setScore((s) => s + 10);
+            } else {
+              setLives((lv) => lv - 1);
+            }
+          } else {
+            remaining.push(l);
+          }
+        });
+
+        if (Math.random() < 0.5) {
+          remaining.push({
+            id: Date.now(),
+            x: getRandomX(),
+            y: 0,
+            char: getRandomLetter(),
+          });
+        }
+
+        return remaining;
+      });
+    }, speed);
+
+    return () => clearInterval(interval);
+  }, [bucket, speed, gameOver]);
+
+  useEffect(() => {
+    const handleKey = (e) => {
+      if (gameOver) return;
+
+      if (e.key === "ArrowLeft") {
+        setBucket((b) => Math.max(0, b - 1));
+      }
+      if (e.key === "ArrowRight") {
+        setBucket((b) => Math.min(9, b + 1));
+      }
+    };
+
+    window.addEventListener("keydown", handleKey);
+    return () => window.removeEventListener("keydown", handleKey);
+  }, [gameOver]);
+
+  useEffect(() => {
+    if (score > 0 && score % 50 === 0) {
+      setSpeed((s) => Math.max(100, s - 50));
+    }
+  }, [score]);
+
+  useEffect(() => {
+    if (lives <= 0) setGameOver(true);
+  }, [lives]);
+
+  const restart = () => {
+    setLetters([{ id: 1, x: getRandomX(), y: 0, char: getRandomLetter() }]);
+    setScore(0);
+    setLives(3);
+    setSpeed(500);
+    setGameOver(false);
+    setBucket(4);
+  };
+
+  return (
+    <div className="container">
+      <h1>🧺 Catch Letters Game</h1>
+      <p>Score: {score} | Lives: {lives}</p>
+
+      <div className="grid">
+        {Array.from({ length: 10 }).map((_, row) =>
+          Array.from({ length: 10 }).map((_, col) => {
+            const cellLetters = letters.filter((l) => l.y === row && l.x === col);
+            const isBucket = row === 9 && col === bucket;
+
+            return (
+              <div key={`${row}-${col}`} className="cell">
+                {cellLetters.map((l) => (
+                  <span key={l.id} className="letter">{l.char}</span>
+                ))}
+                {isBucket && <span className="bucket">🧺</span>}
+              </div>
+            );
+          })
+        )}
+      </div>
+
+      {gameOver && (
+        <div>
+          <h2 style={{ color: "red" }}>Game Over</h2>
+          <button onClick={restart}>Restart</button>
+        </div>
+      )}
+
+      <p>Move 🧺 using ← → keys</p>
+      <p>Catch multiple falling letters!</p>
+    </div>
+  );
+}
+
+
+//CSS
+
+.container {
+  text-align: center;
+  background: #111;
+  color: white;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(10, 40px);
+  gap: 5px;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.cell {
+  width: 40px;
+  height: 40px;
+  background: #333;
+  border: 1px solid #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.letter {
+  font-size: 20px;
+  color: yellow;
+  font-weight: bold;
+}
+
+.bucket {
+  font-size: 22px;
+}
