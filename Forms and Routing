@@ -1,0 +1,193 @@
+// Folder Structure:
+// src/
+// ├── App.jsx
+// ├── components/
+// │   ├── Sidebar.jsx
+// │   ├── Dashboard.jsx
+// │   ├── AddBook.jsx
+// │   ├── Books.jsx
+// │   ├── BookDetails.jsx
+// │   ├── Members.jsx
+// │   ├── Borrowed.jsx
+// │   └── data.js
+
+
+// -------- data.js --------
+export const books = [
+  { id: 1, title: "React Guide", author: "John", status: "Available" },
+  { id: 2, title: "JavaScript Pro", author: "Alice", status: "Borrowed" }
+];
+
+
+// -------- Sidebar.jsx --------
+import { Link } from "react-router-dom";
+
+export default function Sidebar() {
+  return (
+    <div className="w-64 h-screen bg-indigo-900 text-white p-5">
+      <h2 className="text-2xl font-bold mb-6">Library System</h2>
+      <ul className="space-y-4">
+        <li><Link to="/">Dashboard</Link></li>
+        <li><Link to="/add-book">Add Book</Link></li>
+        <li><Link to="/books">All Books</Link></li>
+        <li><Link to="/members">Members</Link></li>
+        <li><Link to="/borrowed">Borrowed</Link></li>
+      </ul>
+    </div>
+  );
+}
+
+
+// -------- Dashboard.jsx --------
+import { Card, CardContent } from "@/components/ui/card";
+
+export default function Dashboard() {
+  return (
+    <Card className="p-6">
+      <CardContent>
+        <h1 className="text-2xl font-bold">Library Dashboard</h1>
+      </CardContent>
+    </Card>
+  );
+}
+
+
+// -------- AddBook.jsx --------
+import { useState } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+import { Textarea } from "@/components/ui/textarea";
+
+export default function AddBook() {
+  const [rating, setRating] = useState(3);
+
+  return (
+    <Card className="p-6">
+      <CardContent>
+        <h2>Add Book</h2>
+        <Input placeholder="Title" />
+        <Input placeholder="Author" />
+        <Input type="number" placeholder="Price" />
+
+        <input
+          type="range"
+          min="1"
+          max="5"
+          value={rating}
+          onChange={(e) => setRating(e.target.value)}
+        />
+
+        <Textarea placeholder="Description" />
+        <Button>Add</Button>
+      </CardContent>
+    </Card>
+  );
+}
+
+
+// -------- Books.jsx --------
+import { Link } from "react-router-dom";
+import { Card, CardContent } from "@/components/ui/card";
+import { books } from "./data";
+
+export default function Books() {
+  return (
+    <Card className="p-6">
+      <CardContent>
+        <h2>Books</h2>
+        {books.map((b) => (
+          <div key={b.id}>
+            <Link to={`/books/${b.id}`}>{b.title}</Link>
+            <span>{b.status}</span>
+          </div>
+        ))}
+      </CardContent>
+    </Card>
+  );
+}
+
+
+// -------- BookDetails.jsx --------
+import { useParams } from "react-router-dom";
+import { books } from "./data";
+
+export default function BookDetails() {
+  const { id } = useParams();
+  const book = books.find((b) => b.id === parseInt(id));
+
+  if (!book) return <p>Not found</p>;
+
+  return (
+    <div>
+      <h2>{book.title}</h2>
+      <p>{book.author}</p>
+      <p>{book.status}</p>
+    </div>
+  );
+}
+
+
+// -------- Members.jsx --------
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
+
+export default function Members() {
+  return (
+    <Card className="p-6">
+      <CardContent>
+        <Input placeholder="Name" />
+        <Input placeholder="Email" />
+        <Button>Add</Button>
+      </CardContent>
+    </Card>
+  );
+}
+
+
+// -------- Borrowed.jsx --------
+import { books } from "./data";
+
+export default function Borrowed() {
+  const borrowed = books.filter((b) => b.status === "Borrowed");
+
+  return (
+    <div>
+      {borrowed.map((b) => (
+        <p key={b.id}>{b.title}</p>
+      ))}
+    </div>
+  );
+}
+
+
+// -------- App.jsx --------
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Sidebar from "./components/Sidebar";
+import Dashboard from "./components/Dashboard";
+import AddBook from "./components/AddBook";
+import Books from "./components/Books";
+import BookDetails from "./components/BookDetails";
+import Members from "./components/Members";
+import Borrowed from "./components/Borrowed";
+
+export default function App() {
+  return (
+    <Router>
+      <div className="flex">
+        <Sidebar />
+        <div className="flex-1 p-6">
+          <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/add-book" element={<AddBook />} />
+            <Route path="/books" element={<Books />} />
+            <Route path="/books/:id" element={<BookDetails />} />
+            <Route path="/members" element={<Members />} />
+            <Route path="/borrowed" element={<Borrowed />} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
+  );
+}
